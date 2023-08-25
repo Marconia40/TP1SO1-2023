@@ -6,11 +6,8 @@ int main()
 {
     FILE    *archivo;
     char    info[20];
-    //char    Hola[5] = "hola";
-    int     valor[3];
-    char    MemT[15] = "MemTotal:";
-    char    MemF[15] = "MemFree:";
-    char    MemA[15] = "MemAvailable:";
+    int     valor[5];
+    char    NameReg[5][15] = {"MemTotal:","MemFree:","MemAvailable:","SwapTotal:","SwapFree:"};
 
     archivo = fopen("/proc/meminfo", "r");
     if (archivo == NULL){
@@ -21,22 +18,23 @@ int main()
     }
 
     while(fscanf(archivo,"%s", info) == 1){
-        if(strcmp(info , MemT) == 0){
+        if(strcmp(info , NameReg[0]) == 0)            //Escanea el valor leido si es igual a MemTotal: y almacena el valor numerico de ese registro
             fscanf(archivo, "%d", &valor[0]);
-        }
-        else if(strcmp(info , MemF) == 0){
+        else if(strcmp(info , NameReg[1]) == 0)
             fscanf(archivo, "%d", &valor[1]);
-        }
-        else if(strcmp(info, MemA) == 0){
+        else if(strcmp(info, NameReg[2]) == 0)
             fscanf(archivo, "%d", &valor[2]);
-        }
+        else if(strcmp(info, NameReg[3]) == 0)
+            fscanf(archivo, "%d", &valor[3]);
+        else if(strcmp(info, NameReg[4]) == 0)
+            fscanf(archivo, "%d", &valor[4]);
     }
 
+    for(int i=0; i<3; i++)
+        printf("El registro %s %d MB. \n", NameReg[i],valor[i]/1000);
     
-    printf("%s %d MB. \n", MemT,valor[0]/1000);
-    printf("%s %d MB. \n", MemF,valor[1]/1000);
-    printf("%s %d MB. \n", MemA,valor[2]/1000);
-    
+    printf("La Swap ocupada es %s %d MB - %s %d MB, que es igual a: %d MB. \n", NameReg[3], valor[3]/1000, NameReg[4], valor[4]/1000, (valor[3]-valor[4])/1000);
+
     fclose(archivo);
     return 0;
 }
