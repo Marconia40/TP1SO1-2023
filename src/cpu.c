@@ -2,8 +2,9 @@
 #include <stdlib.h>
 #include <ctype.h>
 #include <string.h>
+#include "cpu.h"
 
-int main(){
+void main_cpu(){
 
     FILE    *archivo;
     char    info[30];
@@ -55,13 +56,5 @@ int main(){
     printf("Cantidad de Cores: %d \n", nroCore);
     printf("Cantidad de thread por cores es igual a (Cant de Hilos %d)/(Cant de Cores %d): %d \n", nroHilos, nroCore, nroHilos/nroCore);
 
-
-    /*
-    for(int i=0;i<15;i++){
-        fscanf(archivo,"%s",info);
-        printf(". %s . \n", info);
-    }*/
-
     fclose(archivo);
-    return 0;
 }

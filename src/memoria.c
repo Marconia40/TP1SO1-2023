@@ -1,8 +1,9 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include "mem.h"
 
-int main()
+void main_mem()
 {
     FILE    *archivo;
     char    info[20];
@@ -36,5 +37,4 @@ int main()
     printf("La Swap ocupada es %s %d MB - %s %d MB, que es igual a: %d MB. \n", NameReg[3], valor[3]/1000, NameReg[4], valor[4]/1000, (valor[3]-valor[4])/1000);
 
     fclose(archivo);
-    return 0;
 }
