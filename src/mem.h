@@ -1,4 +1,4 @@
-#ifdef MEM_H
+#ifndef MEM_H
 #define MEM_H
 
 void main_mem();

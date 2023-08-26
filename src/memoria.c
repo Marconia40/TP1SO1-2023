@@ -15,7 +15,7 @@ void main_mem()
         printf("%s", "No es posible abrir el archivo /proc/meminfo.\n");
     }   
     else{
-        printf("%s","El archivo /proc/meminfo se abrio correctamente.\n");
+        printf("%s","El archivo /proc/meminfo se abrio correctamente.\n\n");
     }
 
     while(fscanf(archivo,"%s", info) == 1){
