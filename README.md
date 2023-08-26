@@ -16,9 +16,9 @@ Los temas que se enlistan a continuación son básicos de programación. Este la
 ## Actividades
 1. C-strings
 Realice las siguientes actividades:
-   1. Obtener la **memoria ram total**, **libre** y **disponible** en *Megabytes*. A partir del archivo */proc/meminfo*. 
-   1. Obtener la memoria *swap* **Ocupada**. A partir del archivo */proc/meminfo*.
-   1. Crear un programa en C que imprima información referida al CPU, a partir del archivo */proc/cpuinfo*:
+    - Obtener la **memoria ram total**, **libre** y **disponible** en *Megabytes*. A partir del archivo */proc/meminfo*. 
+    - Obtener la memoria *swap* **Ocupada**. A partir del archivo */proc/meminfo*.
+2. Crear un programa en C que imprima información referida al CPU, a partir del archivo */proc/cpuinfo*:
        - Modelo de CPU.
        - Cantidad de cores 
        - Cantidad de thread por cores.
