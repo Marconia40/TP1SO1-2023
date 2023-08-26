@@ -8,9 +8,10 @@ int main(){
     FILE    *archivo;
     char    info[30];
     int     cont = 0;
-    //int     valor[2];
-    char    nameReg[8][20] = {"model","name","stepping","siblings","cpu","cores",":","power"};
+    char    nameReg[6][20] = {"model","name","siblings","cpu","cores","power"};
     char    nameCpu[70];
+    int     nroHilos;
+    int     nroCore;
 
     archivo = fopen("/proc/cpuinfo", "r");
     if (archivo == NULL){
@@ -36,10 +37,24 @@ int main(){
                 }
             }
         }
-        else if(strcmp(info, nameReg[7]) == 0)
+        else if(strcmp(info, nameReg[2]) == 0){
+            fscanf(archivo,"%s", info);
+            fscanf(archivo,"%d", &nroHilos);
+        }
+        else if(strcmp(info, nameReg[3]) == 0){
+            fscanf(archivo,"%s", info);
+            if(strcmp(info , nameReg[4]) == 0){
+                fscanf(archivo,"%s", info);
+                fscanf(archivo,"%d", &nroCore);
+            }
+        }
+        else if(strcmp(info, nameReg[5]) == 0)
         break;
     }
-    printf("nameCpu: %s \n", nameCpu);
+    printf("Modelo de CPU: %s \n", nameCpu);
+    printf("Cantidad de Cores: %d \n", nroCore);
+    printf("Cantidad de thread por cores es igual a (Cant de Hilos %d)/(Cant de Cores %d): %d \n", nroHilos, nroCore, nroHilos/nroCore);
+
 
     /*
     for(int i=0;i<15;i++){
